@@ -101,19 +101,19 @@ public class SnakeView : MonoBehaviour, ISnakeView
         switch (fruitName)
         {
             case "Apple":
-                FruitEffects.AppleEffect(presenter);
+                AppleEffect(presenter);
                 break;
             case "Blueberry":
-                FruitEffects.BlueberryEffect(presenter);
+                BlueberryEffect(presenter);
                 break;
             case "Grape":
-                FruitEffects.GrapeEffect(presenter);
+                GrapeEffect(presenter);
                 break;
             case "Melon":
-                FruitEffects.MelonEffect(presenter);
+                MelonEffect(presenter);
                 break;
             case "Peach":
-                FruitEffects.PeachEffect(presenter);
+                PeachEffect(presenter);
                 break;
         }
     }
