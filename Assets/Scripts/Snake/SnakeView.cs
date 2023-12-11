@@ -15,9 +15,9 @@ public class SnakeView : MonoBehaviour, ISnakeView
     [SerializeField] private SnakeTailManager tailManager;
     [SerializeField] private GameObject bodySegment;
     [SerializeField] private Transform snakeHead;
-    float Speed;
-    bool CanMove;
-    float DelayCounter = 0f;
+    float speed;
+    bool canMove;
+    float delayCounter = 0f;
     float bodyMoveSharpness = 0.4f;
     private List<Transform> bodySegments = new List<Transform>();
 
@@ -31,7 +31,7 @@ public class SnakeView : MonoBehaviour, ISnakeView
     void Update()
     {
         Move();
-        DelayCounter += Time.deltaTime;
+        delayCounter += Time.deltaTime;
     }
 
     void LateUpdate()
@@ -41,13 +41,13 @@ public class SnakeView : MonoBehaviour, ISnakeView
 
     private void Move()
     {
-        if (!CanMove) return;
-        snakeHead.Translate(Vector3.forward * Speed * Time.deltaTime);
+        if (!canMove) return;
+        snakeHead.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
     private void MoveBody()
     {
-        if (!CanMove) return;
+        if (!canMove) return;
         if (bodySegments.Count < 1) return;
 
         Vector3 headPreviousPosition = snakeHead.position;
@@ -75,7 +75,7 @@ public class SnakeView : MonoBehaviour, ISnakeView
     #region View -> Presenter
     public void User_Event_StartMoving(InputAction.CallbackContext context)
     {
-        if (CanMove) return;
+        if (canMove) return;
         HideStartText();
         presenter.StartMovement();
         timer.engaged = true;
@@ -83,8 +83,8 @@ public class SnakeView : MonoBehaviour, ISnakeView
 
     public void User_Event_Move(InputAction.CallbackContext context)
     {
-        if (!CanMove) return;
-        if (!presenter.CheckTurnDelay(DelayCounter)) return;
+        if (!canMove) return;
+        if (!presenter.CheckTurnDelay(delayCounter)) return;
         Vector2 value = context.ReadValue<Vector2>();
         if (Mathf.Abs(value.x) < Mathf.Abs(value.y)) VerticalMovement(value.y);
         else HorizontalMovement(value.x);
@@ -132,13 +132,13 @@ public class SnakeView : MonoBehaviour, ISnakeView
     #endregion
 
     #region Presenter -> View
-    public void SetSpeed(float speed) => Speed = speed;
+    public void SetSpeed(float speed) => this.speed = speed;
 
     public void SetDirection(Vector3 direction) => snakeHead.eulerAngles = direction;
 
-    public void SetCanMove(bool canMove) => CanMove = canMove;
+    public void SetCanMove(bool canMove) => this.canMove = canMove;
 
-    public void ResetTurnCounter() => DelayCounter = 0;
+    public void ResetTurnCounter() => delayCounter = 0;
 
     public void Grow()
     {
