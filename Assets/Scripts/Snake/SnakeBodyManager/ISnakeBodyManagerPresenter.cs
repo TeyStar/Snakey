@@ -7,4 +7,6 @@ public interface ISnakeBodyManagerPresenter
     void RemoveBodySegment();
     void AddSnakeHeadWayPoints(Queue<Vector3> wayPoints);
     Vector3 GetFinalWayPoint();
+    void CleanQueues();
+    void MoveBody();
 }

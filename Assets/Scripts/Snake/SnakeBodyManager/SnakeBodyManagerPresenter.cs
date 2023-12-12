@@ -36,4 +36,36 @@ public class SnakeBodyManagerPresenter : ISnakeBodyManagerPresenter
     {
         return model.WayPointQueues.Last().Peek();
     }
+
+    public void CleanQueues()
+    {
+        foreach(Queue<Vector3> wayPointQueue in model.WayPointQueues)
+        {
+            while (wayPointQueue.Count > model.MaxWayPoints) 
+            {
+                wayPointQueue.Dequeue();
+            }
+        }
+    }
+
+    public void MoveBody()
+    {
+        for (int i = 0; i < model.BodySegments.Count; i++)
+        {
+            if (model.WayPointQueues[i].Count < model.MaxWayPoints)
+                return;
+            model.BodySegments[i].MyTransform.position = 
+                model.WayPointQueues[i].Dequeue();
+        }
+        UpdateQueues();
+    }
+
+    private void UpdateQueues()
+    {
+        for (int i = 0; i < model.BodySegments.Count; i++)
+        {
+            model.WayPointQueues[i + 1]
+                .Enqueue(model.BodySegments[i].MyTransform.position);
+        }
+    }
 }

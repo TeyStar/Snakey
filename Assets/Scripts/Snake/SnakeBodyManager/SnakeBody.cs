@@ -5,9 +5,8 @@ public class SnakeBody : MonoBehaviour
 {
     public Transform MyTransform;
     public Queue<Vector3> WayPoints;
-    public int MaxWayPoints;
 
-    private void Start()
+    private void Awake()
     {
         MyTransform = transform;
         WayPoints = new Queue<Vector3>();

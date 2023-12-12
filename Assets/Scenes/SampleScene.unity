@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &274933013 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 118725593744322925, guid: 649af73320db4314ab77e5129928da03, type: 3}
-  m_PrefabInstance: {fileID: 3158708185567587523}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &338550061 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5740106813257441955, guid: 19df2940c0d729a44a4255ebc2943965, type: 3}
@@ -465,6 +460,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 236b403b137785f45a706edbe93e6f13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1028655510 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6885678678341341124, guid: 649af73320db4314ab77e5129928da03, type: 3}
+  m_PrefabInstance: {fileID: 2093643209}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11261332e02d6764a96fb4eaf1792d66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1353704397 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4020429355976775035, guid: 19df2940c0d729a44a4255ebc2943965, type: 3}
@@ -506,17 +512,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   engaged: 0
   tmp: {fileID: 1402623457}
---- !u!114 &1585992678 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6885678678341341124, guid: 649af73320db4314ab77e5129928da03, type: 3}
-  m_PrefabInstance: {fileID: 3158708185567587523}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11261332e02d6764a96fb4eaf1792d66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1808380351
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,9 +643,9 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1585992678}
+      - m_Target: {fileID: 1028655510}
         m_TargetAssemblyTypeName: SnakeView, Assembly-CSharp
-        m_MethodName: User_Event_Move
+        m_MethodName: User_Event_StartMoving
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -660,9 +655,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1585992678}
+      - m_Target: {fileID: 1028655510}
         m_TargetAssemblyTypeName: SnakeView, Assembly-CSharp
-        m_MethodName: User_Event_StartMoving
+        m_MethodName: User_Event_Move
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -709,6 +704,79 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!1001 &2093643209
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1345921011555807797, guid: 649af73320db4314ab77e5129928da03, type: 3}
+      propertyPath: m_Name
+      value: Snake
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501908741024124332, guid: 649af73320db4314ab77e5129928da03, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501908741024124332, guid: 649af73320db4314ab77e5129928da03, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501908741024124332, guid: 649af73320db4314ab77e5129928da03, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501908741024124332, guid: 649af73320db4314ab77e5129928da03, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501908741024124332, guid: 649af73320db4314ab77e5129928da03, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501908741024124332, guid: 649af73320db4314ab77e5129928da03, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501908741024124332, guid: 649af73320db4314ab77e5129928da03, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501908741024124332, guid: 649af73320db4314ab77e5129928da03, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501908741024124332, guid: 649af73320db4314ab77e5129928da03, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501908741024124332, guid: 649af73320db4314ab77e5129928da03, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1501908741024124332, guid: 649af73320db4314ab77e5129928da03, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885678678341341124, guid: 649af73320db4314ab77e5129928da03, type: 3}
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 1402623459}
+    - target: {fileID: 6885678678341341124, guid: 649af73320db4314ab77e5129928da03, type: 3}
+      propertyPath: scoreText
+      value: 
+      objectReference: {fileID: 1353704397}
+    - target: {fileID: 6885678678341341124, guid: 649af73320db4314ab77e5129928da03, type: 3}
+      propertyPath: startText
+      value: 
+      objectReference: {fileID: 651818266}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 649af73320db4314ab77e5129928da03, type: 3}
 --- !u!1 &2129597599
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,7 +892,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2064791326635797901, guid: 834349b0ffe5dd64a9e9bfae01171c13, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2064791326635797901, guid: 834349b0ffe5dd64a9e9bfae01171c13, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1225,87 +1293,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5742c0397d6f7c347b3e7b5c93fad64e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &3158708185567587523
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1345921011555807797, guid: 649af73320db4314ab77e5129928da03, type: 3}
-      propertyPath: m_Name
-      value: Snake
-      objectReference: {fileID: 0}
-    - target: {fileID: 1501908741024124332, guid: 649af73320db4314ab77e5129928da03, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1501908741024124332, guid: 649af73320db4314ab77e5129928da03, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1501908741024124332, guid: 649af73320db4314ab77e5129928da03, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1501908741024124332, guid: 649af73320db4314ab77e5129928da03, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1501908741024124332, guid: 649af73320db4314ab77e5129928da03, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1501908741024124332, guid: 649af73320db4314ab77e5129928da03, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1501908741024124332, guid: 649af73320db4314ab77e5129928da03, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1501908741024124332, guid: 649af73320db4314ab77e5129928da03, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1501908741024124332, guid: 649af73320db4314ab77e5129928da03, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1501908741024124332, guid: 649af73320db4314ab77e5129928da03, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1501908741024124332, guid: 649af73320db4314ab77e5129928da03, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6885678678341341124, guid: 649af73320db4314ab77e5129928da03, type: 3}
-      propertyPath: timer
-      value: 
-      objectReference: {fileID: 1402623459}
-    - target: {fileID: 6885678678341341124, guid: 649af73320db4314ab77e5129928da03, type: 3}
-      propertyPath: scoreText
-      value: 
-      objectReference: {fileID: 1353704397}
-    - target: {fileID: 6885678678341341124, guid: 649af73320db4314ab77e5129928da03, type: 3}
-      propertyPath: snakeHead
-      value: 
-      objectReference: {fileID: 274933013}
-    - target: {fileID: 6885678678341341124, guid: 649af73320db4314ab77e5129928da03, type: 3}
-      propertyPath: startText
-      value: 
-      objectReference: {fileID: 651818266}
-    - target: {fileID: 8667529623716463969, guid: 649af73320db4314ab77e5129928da03, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 649af73320db4314ab77e5129928da03, type: 3}
 --- !u!1001 &3467910415622910816
 PrefabInstance:
   m_ObjectHideFlags: 0

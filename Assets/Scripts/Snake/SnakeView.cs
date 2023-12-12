@@ -25,6 +25,7 @@ public class SnakeView : MonoBehaviour, ISnakeView
         m_transform = transform;
         WayPoints = new Queue<Vector3>();
         snakeBodyManager.Initialize(WayPoints);
+        Application.targetFrameRate = 60;  // Capping frame rate for waypoints to work atm.
     }
 
     void Update()
@@ -36,6 +37,7 @@ public class SnakeView : MonoBehaviour, ISnakeView
     private void Move()
     {
         if (!canMove) return;
+        WayPoints.Enqueue(snakeHead.position);
         snakeHead.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
