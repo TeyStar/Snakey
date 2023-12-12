@@ -12,20 +12,19 @@ public class SnakeView : MonoBehaviour, ISnakeView
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private GameObject startText;
     [SerializeField] private Timer timer;
-    [SerializeField] private SnakeTailManager tailManager;
-    [SerializeField] private GameObject bodySegment;
+    [SerializeField] private SnakeBodyManagerView snakeBodyManager;
     [SerializeField] private Transform snakeHead;
     float speed;
     bool canMove;
     float delayCounter = 0f;
-    float bodyMoveSharpness = 0.4f;
-    private List<Transform> bodySegments = new List<Transform>();
+    public Queue<Vector3> WayPoints;
 
     void Start()
     {
         presenter = new SnakePresenter(this);
         m_transform = transform;
-        tailManager.Initialize(m_transform.Find("Tail"));
+        WayPoints = new Queue<Vector3>();
+        snakeBodyManager.Initialize(WayPoints);
     }
 
     void Update()
@@ -34,31 +33,10 @@ public class SnakeView : MonoBehaviour, ISnakeView
         delayCounter += Time.deltaTime;
     }
 
-    void LateUpdate()
-    {
-        MoveBody();
-    }
-
     private void Move()
     {
         if (!canMove) return;
         snakeHead.Translate(Vector3.forward * speed * Time.deltaTime);
-    }
-
-    private void MoveBody()
-    {
-        if (!canMove) return;
-        if (bodySegments.Count < 1) return;
-
-        Vector3 headPreviousPosition = snakeHead.position;
-        for (int i = 0; i < bodySegments.Count; i++)
-        {
-            Vector3 tempPos = bodySegments[i].position;
-            Vector3 followOffset = tempPos - headPreviousPosition;
-            Vector3 targetPosition = headPreviousPosition + followOffset.normalized * bodyMoveSharpness;
-            bodySegments[i].position = targetPosition;
-            headPreviousPosition = tempPos;
-        }
     }
 
     private void IncreaseScore()
@@ -142,38 +120,17 @@ public class SnakeView : MonoBehaviour, ISnakeView
 
     public void Grow()
     {
-        Transform tailTransform = tailManager.GetTailEnd();
-        GameObject newBodySegment = Instantiate(bodySegment, tailTransform.position, tailTransform.rotation);
-
-        bodySegments.Add(newBodySegment.transform);
-        tailManager.AddTailTransform(newBodySegment.transform);
-        // Is this a bug?  Did I forget to include the tail and just went with the body??
+        snakeBodyManager.CreateBodySegment();
     }
 
     public void Shrink()
     {
-        Transform lostBodySegment = bodySegments[bodySegments.Count - 1];
-        tailManager.RemoveTailTransform(lostBodySegment.transform);
-        bodySegments.Remove(lostBodySegment);
-        Destroy(lostBodySegment.gameObject);
+        snakeBodyManager.RemoveBodySegment();
     }
 
     public void Reversal()
     {
-        if (bodySegments.Count == 0) return;
-        tailManager.ReverseList();
-        bodySegments.Reverse();
-
-        StartCoroutine(ReversalSafety());
-        Vector3 newHeadLocation = bodySegments[bodySegments.Count - 1].position;
-        bodySegments[0].position = snakeHead.position;
-        for (int i = 1; i < bodySegments.Count; i++)
-        {
-            bodySegments[i].position = bodySegments[i-1].position;
-        }
-        snakeHead.position = newHeadLocation;
-        Vector3 newDirection =  new Vector3(snakeHead.eulerAngles.x, snakeHead.eulerAngles .y * - 1, snakeHead.eulerAngles.z);
-        snakeHead.eulerAngles = newDirection;
+        
     }
 
     // Reversal is buggy, this is temporary.
